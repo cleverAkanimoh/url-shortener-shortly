@@ -17,7 +17,7 @@
   color: hsl(0, 87%, 67%);
 }
 
-input:focus{
+input:focus {
   outline: none;
 }
 
@@ -79,9 +79,13 @@ nav header button i {
   font-weight: 700;
   top: 4rem;
   background-color: #3a3053;
-  color: white;
+  color: hsl(0, 0%, 75%);
   padding: 2rem;
   border-radius: 0.6rem;
+}
+
+nav span:hover {
+  color: #000;
 }
 
 nav header div {
@@ -99,14 +103,16 @@ nav header div {
 }
 
 nav button {
-  color: white;
+  color: hsl(0, 0%, 75%);
   padding: 0.9rem;
   font-size: 1rem;
   font-weight: 700;
   /* height: 48px; */
 }
+
 #sign-up {
   background-color: #2bd1d1;
+  color: white;
   width: 130px;
   border-radius: 1rem;
 }
