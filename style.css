@@ -8,6 +8,13 @@
   color: white;
 } */
 
+.error {
+  color: hsl(0, 87%, 67%);
+  border-color: hsl(0, 87%, 67%);
+}
+
+
+
 ul {
   list-style-type: none;
 }
