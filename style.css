@@ -348,6 +348,7 @@ footer div a {
   .bg-custom .chooseUsDiv aside figure {
     margin-left: -6rem;
   }
+
   #second {
     margin-top: 3rem;
   }
@@ -356,7 +357,7 @@ footer div a {
   }
   .line {
     height: 1rem;
-    width: 100%;
+    width: 90%;
     top: 50%;
   }
 
