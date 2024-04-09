@@ -265,6 +265,9 @@ form button {
 
 #records-container {
   width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .records {
@@ -272,21 +275,23 @@ form button {
   flex-direction: column;
   gap: 3px;
   background-color: #fff;
-  padding: 0.5rem;
   border-radius: 0.35rem;
-  /* border: 1px solid hsla(0, 0%, 75%, 0.35); */
+  padding: 0.85rem 1rem;
 }
 .records > div {
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-between;
-}
-.records > span {
-  padding: 0 1rem;
 }
 
 .records  a {
   color: hsl(180, 66%, 49%);
+  text-decoration: none;
+}
+
+.records a:hover{
+  text-decoration: underline;
 }
 
 .copy-btn {
