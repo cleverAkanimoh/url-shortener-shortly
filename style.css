@@ -209,7 +209,7 @@ form input {
   font-weight: 600;
 }
 input::placeholder {
-  color: #a6a5ab;
+  color: hsl(257, 7%, 63%);
   opacity: 80%;
 }
 
@@ -221,7 +221,7 @@ form button {
   background-color: #f0f1f6;
   padding: 10rem 0;
   gap: 5rem;
-  margin-top: -5rem;
+  margin-top: -10rem;
   z-index: -1;
 }
 
@@ -237,11 +237,20 @@ form button {
   position: relative;
 }
 
+#first {
+  margin: 4rem 0.5rem;
+  color: hsl(0, 0%, 75%);
+}
+
+#first h2 {
+  color: #000;
+}
+
 .bg-custom .chooseUsDiv aside {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7rem;
+  gap: 8rem;
 }
 
 .line {
@@ -257,16 +266,19 @@ form button {
   place-items: center;
   background-color: hsl(255, 11%, 22%);
   padding: 1.5rem;
-  margin-top: -3.5rem;
+  margin-top: -5.2rem;
   border-radius: 100%;
 }
 .chooseUsDiv aside div {
   position: relative;
   background-color: white;
-  padding: 1rem;
+  border:  1px solid hsla(0, 0%, 75%, 0.35);
+  padding: 2.5rem 1rem;
   width: 90%;
   border-radius: 0.3rem;
 }
+
+/* boost links */
 
 #boost-links {
   display: flex;
