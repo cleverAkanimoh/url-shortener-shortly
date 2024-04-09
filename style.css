@@ -230,7 +230,7 @@ form {
   gap: 1rem;
   background-image: url(./images/bg-shorten-mobile.svg);
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-color: hsl(255, 11%, 22%);
   border-radius: 0.35rem;
 }
