@@ -213,6 +213,8 @@ a:hover {
 #form-article {
   background-color: #f0f1f6;
   width: 100%;
+  padding: 0 0 10rem;
+  position: relative;
 }
 
 #form-section {
@@ -259,7 +261,46 @@ form button {
   border-radius: 0.35rem;
 }
 
+/* records */
+
+#records-container {
+  width: 90%;
+}
+
+.records {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  background-color: #fff;
+  padding: 0.5rem;
+  border-radius: 0.35rem;
+  /* border: 1px solid hsla(0, 0%, 75%, 0.35); */
+}
+.records > div {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+.records > span {
+  padding: 0 1rem;
+}
+
+.records  p {
+  color: hsl(180, 66%, 49%);
+}
+
+.copy-btn {
+  width: 80px;
+  font-size: 14px;
+  border-radius: 0.35rem;
+  padding: 0.35rem;
+}
+
+/* article */
+
 .bg-custom {
+  display: flex;
+  flex-direction: column;
   width: 100%;
   gap: 5rem;
 }
