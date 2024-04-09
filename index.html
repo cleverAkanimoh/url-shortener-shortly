@@ -13,7 +13,7 @@
     />
     <link rel="stylesheet" href="style.css" />
     <link
-      href="https://fonts.googleapis.com/css?family=Rubik"
+      href="https://fonts.googleapis.com/css?family=Poppins"
       rel="stylesheet"
     />
     <link
@@ -28,11 +28,12 @@
     <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
     <style>
       .attribution {
-        font-size: 11px;
+        font-size: 16px;
         text-align: center;
       }
       .attribution a {
         color: hsl(228, 45%, 44%);
+        text-decoration: none;
       }
     </style>
   </head>
@@ -72,18 +73,25 @@
           <button id="get-started">Get Started</button>
         </section>
       </section>
-      <form id="form" method="POST">
-        <div id="form-div">
-          <input
-          type="text"
-          id="url-shortner-input"
-          placeholder="Shorten a link here..."
-          
-        />
-        <label for="url-shortner-input" id="error-label" class="error"></label>
+      
+      <section id="form-section">
+        <form id="form" method="POST">
+          <div id="form-div">
+            <input
+            type="text"
+            id="url-shortner-input"
+            placeholder="Shorten a link here..."
+            
+          />
+          <label for="url-shortner-input" id="error-label" class="error"></label>
+          </div>
+          <button id="shorten-btn">Shorten It!</button>
+        </form>
+        
+        <div>
+        
         </div>
-        <button id="shorten-btn">Shorten It!</button>
-      </form>
+      </section>
 
       <section class="bg-custom">
         <div>

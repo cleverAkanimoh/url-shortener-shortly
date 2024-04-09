@@ -17,6 +17,13 @@
   color: hsl(0, 87%, 67%);
 }
 
+button,
+a,
+span,
+label {
+  transition: all 300ms;
+}
+
 input:focus {
   outline: none;
 }
@@ -26,23 +33,23 @@ ul {
 }
 
 p {
-  color: #a6a5ab;
+  color: hsl(257, 7%, 63%);
   font-size: 18px;
   line-height: 1.88;
   text-align: center;
   font-weight: 500;
+  padding: 0 1rem;
 }
 
 nav {
   height: 4rem;
-  border: 1px solid;
   display: flex;
   padding: 0 1rem;
   color: gray;
 }
 
 body {
-  font-family: "Rubik";
+  font-family: "Poppins";
 }
 
 nav header {
@@ -52,7 +59,7 @@ nav header {
   align-items: center;
   width: 100%;
   max-width: 1100px;
-  /* margin: 0 auto; */
+  margin: 0 auto;
 }
 
 nav header button {
@@ -62,11 +69,11 @@ nav header button {
   cursor: pointer;
 }
 
-
 nav header button i {
   font-size: 2rem;
   color: gray;
 }
+
 #dropdown {
   /* display: none; */
   width: 100%;
@@ -78,7 +85,7 @@ nav header button i {
   gap: 1.5rem;
   font-weight: 700;
   top: 4rem;
-  background-color: #3a3053;
+  background-color: hsl(257, 27%, 26%);
   color: hsl(0, 0%, 75%);
   padding: 2rem;
   border-radius: 0.6rem;
@@ -86,6 +93,7 @@ nav header button i {
 
 nav span:hover {
   color: #fff;
+  cursor: pointer;
 }
 
 nav header div {
@@ -98,8 +106,9 @@ nav header div {
   padding-top: 1rem;
   margin-top: 1rem;
 }
+
 #auth-div {
-  border-top: 1px solid rgba(128, 128, 128, 0.202);
+  border-top: 1px solid rgba(128, 128, 128, 0.271);
 }
 
 nav button {
@@ -110,10 +119,15 @@ nav button {
   /* height: 48px; */
 }
 
+nav button:not(#sign-up):hover {
+  opacity: 100%;
+  color: #fff;
+}
+
 #sign-up {
-  background-color: #2bd1d1;
-  color: white;
-  width: 130px;
+  background-color: hsl(180, 66%, 49%);
+  color: #fff;
+  width: 140px;
   border-radius: 1rem;
 }
 
@@ -146,7 +160,7 @@ main section {
 
 main button {
   border: none;
-  background-color: #2bd1d1;
+  background-color: hsl(180, 66%, 49%);
   padding: 1rem;
   width: 100%;
   color: white;
@@ -175,7 +189,7 @@ form {
   background-image: url(./images/bg-shorten-mobile.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #3a3053;
+  background-color: hsl(255, 11%, 22%);
   border-radius: 0.7rem;
 }
 
@@ -235,14 +249,14 @@ form button {
   position: absolute;
   width: 0.5rem;
   height: 100%;
-  background-color: #2bd1d1;
+  background-color: hsl(180, 66%, 49%);
   z-index: 0;
 }
 
 .chooseUsDiv aside div figure {
   display: grid;
   place-items: center;
-  background-color: #3a3053;
+  background-color: hsl(255, 11%, 22%);
   padding: 1.5rem;
   margin-top: -3.5rem;
   border-radius: 100%;
@@ -262,7 +276,7 @@ form button {
   background-image: url(./images//bg-boost-mobile.svg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-color: #3a3053;
+  background-color: hsl(255, 11%, 22%);
   height: 300px;
   width: 100%;
   color: white;
@@ -324,7 +338,6 @@ footer div a {
     justify-content: space-between;
     background-color: #fff;
     padding: 1rem 0;
-    border: 1px solid;
   }
   nav img {
     width: fit-content;
@@ -343,7 +356,6 @@ footer div a {
     justify-content: space-between;
     flex-shrink: 0;
     width: 85%;
-    border: 1px solid #000;
   }
   nav span:hover {
     color: #000;
@@ -353,6 +365,10 @@ footer div a {
     flex-direction: row;
     padding: 0;
     margin: 0;
+  }
+
+  nav header div {
+    width: fit-content;
   }
 
   nav button:not(#sign-up):hover {
@@ -375,6 +391,7 @@ footer div a {
   form {
     flex-direction: row;
     align-items: start;
+    background-image: url(./images/bg-shorten-desktop.svg);
   }
 
   #form-div {
@@ -411,6 +428,10 @@ footer div a {
     height: 1rem;
     width: 90%;
     top: 50%;
+  }
+
+  #boost-links {
+    background-image: url(./images//bg-boost-desktop.svg);
   }
 
   footer,
