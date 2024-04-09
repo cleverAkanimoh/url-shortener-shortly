@@ -285,7 +285,7 @@ form button {
   padding: 0 1rem;
 }
 
-.records  p {
+.records  a {
   color: hsl(180, 66%, 49%);
 }
 
