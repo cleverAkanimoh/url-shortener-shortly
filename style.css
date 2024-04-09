@@ -39,6 +39,7 @@ p {
   text-align: center;
   font-weight: 500;
   padding: 0 1rem;
+  max-width: 500px;
 }
 
 nav {
@@ -238,7 +239,7 @@ form button {
 }
 
 #first {
-  margin: 4rem 0.5rem;
+  margin: 3rem 0.5rem;
   color: hsl(0, 0%, 75%);
 }
 
