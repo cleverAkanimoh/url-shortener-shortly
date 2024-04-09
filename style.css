@@ -290,6 +290,10 @@ form button {
   text-decoration: none;
 }
 
+.active {
+  background-color: hsl(257, 27%, 26%);
+}
+
 .records a:hover{
   text-decoration: underline;
 }
