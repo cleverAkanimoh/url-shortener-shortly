@@ -22,7 +22,7 @@ a,
 span,
 label {
   transition: all 300ms;
-} 
+}
 
 input:focus {
   outline: none;
@@ -42,15 +42,20 @@ p {
   max-width: 500px;
 }
 
+
+body,
+button,
+input {
+  font-family: "Poppins";
+}
+
+/* nav area */
+
 nav {
   height: 4rem;
   display: flex;
   padding: 0 1rem;
-  color: gray;
-}
-
-body {
-  font-family: "Poppins";
+  color: hsl(0, 0%, 75%);
 }
 
 nav header {
@@ -63,20 +68,19 @@ nav header {
   margin: 0 auto;
 }
 
-nav header button {
-  padding: 0.5rem;
+nav button {
+  color: hsl(0, 0%, 75%);
+  padding: 0.9rem;
+  font-size: 1rem;
+  font-weight: 700;
   border: none;
   background-color: transparent;
   cursor: pointer;
 }
 
-nav header button i {
-  font-size: 2rem;
-  color: gray;
-}
-
 #hamm-label {
-  color: hsl(257, 7%, 63%);
+  font-size: 1.25rem;
+  color: hsl(0, 0%, 75%);
   cursor: pointer;
 }
 
@@ -86,7 +90,7 @@ nav header button i {
 
 #hamm:checked ~ #dropdown {
   opacity: 100;
-  height: 400px;
+  height: 380px;
   visibility: visible;
 }
 
@@ -102,7 +106,7 @@ nav header button i {
   justify-content: center;
   gap: 1.5rem;
   font-weight: 700;
-  top: 3.9rem;
+  top: 4rem;
   background-color: hsl(257, 27%, 26%);
   color: hsl(0, 0%, 75%);
   border-radius: 0.6rem;
@@ -110,9 +114,13 @@ nav header button i {
   transition: all 500ms;
 }
 
+nav span {
+  cursor: pointer;
+  padding: 0.25rem;
+}
+
 nav span:hover {
   color: #fff;
-  cursor: pointer;
 }
 
 nav header div {
@@ -131,13 +139,6 @@ nav header div {
   width: 92%;
 }
 
-nav button {
-  color: hsl(0, 0%, 75%);
-  padding: 0.9rem;
-  font-size: 1rem;
-  font-weight: 700;
-}
-
 nav button:not(#sign-up):hover {
   opacity: 100%;
   color: #fff;
@@ -147,8 +148,10 @@ nav button:not(#sign-up):hover {
   background-color: hsl(180, 66%, 49%);
   color: #fff;
   width: 140px;
-  border-radius: 1rem;
+  border-radius: 0.75rem;
 }
+
+/* main content */
 
 main {
   display: flex;
@@ -156,8 +159,13 @@ main {
   align-items: center;
 }
 
+#welcome {
+  max-width: 1150px;
+  padding: 1rem;
+}
+
 #welcome-image {
-  width: 100%;
+  width: 90%;
 }
 
 main h2 {
@@ -295,7 +303,7 @@ form button {
 aside > div {
   position: relative;
   background-color: white;
-  border:  1px solid hsla(0, 0%, 75%, 0.35);
+  border: 1px solid hsla(0, 0%, 75%, 0.35);
   padding: 2.5rem 1rem;
   width: 90%;
   max-width: 400px;
@@ -380,8 +388,8 @@ footer div a {
   #hamm-label {
     display: none;
   }
- 
- #dropdown {
+
+  #dropdown {
     position: relative;
     background-color: transparent;
     padding: 0;
@@ -422,7 +430,8 @@ footer div a {
   #welcome {
     display: flex;
     flex-direction: row-reverse;
-    padding: 0 1rem;
+    justify-content: space-between;
+    padding: 3.5rem 0;
     margin-bottom: 2rem;
   }
   #welcome-image {
