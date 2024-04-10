@@ -4,7 +4,7 @@ const errorLabel = document.getElementById("error-label");
 const shortenBtn = document.getElementById("shorten-btn");
 const recordsContainer = document.getElementById("records-container");
 
-import {simplecopy} from "./simpleCopy.min.js"
+import { simplecopy } from "./simpleCopy.min.js";
 
 let localRecords = [];
 
@@ -20,10 +20,7 @@ window.onload = () => {
       makeDiv(record);
     });
   }
-
   const copyBtn = recordsContainer.getElementsByClassName("copy-btn");
-
-  console.log(copyBtn);
 
   for (let i = 0; i < copyBtn.length; i++) {
     copyBtn[i].onclick = () => {
@@ -105,13 +102,18 @@ form.onsubmit = async (e) => {
       }
     );
 
-    const result = await response.json();
+    if (response.ok) {
+      const result = await response.json();
 
-    makeDiv(setRecord(inputValue, result.result_url));
+      makeDiv(setRecord(inputValue, result.result_url));
 
-    localRecords.push(setRecord(inputValue, result.result_url));
+      localRecords.push(setRecord(inputValue, result.result_url));
 
-    localStorage.setItem("short-links", localRecords);
+      localStorage.setItem("short-links", localRecords);
+      return;
+    }
+
+    setError("Url is not parsable. Try another Url");
   } catch (error) {
     setError("Failed to fetch short url. Try again later");
 
