@@ -83,7 +83,9 @@ form.onsubmit = async (e) => {
   // };
 
   try {
-    await fetch(`https://cleanuri.com/api/v1/shorten`, {
+    // await fetch(url, options);
+    // await response.text();
+    const response = await fetch(`https://cleanuri.com/api/v1/shorten`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -92,12 +94,10 @@ form.onsubmit = async (e) => {
       body: new URLSearchParams({
         url: inputValue,
       }),
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        makeDiv(setRecord(inputValue, data.result_url));
-      })
-      .catch((err) => console.error("Failed to fetch: ", err));
+    });
+    const result = await response.text();
+
+    makeDiv(setRecord(inputValue, result.result_url));
 
     console.log(res);
   } catch (error) {
