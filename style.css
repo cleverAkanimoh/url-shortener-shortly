@@ -285,7 +285,7 @@ form button {
   justify-content: space-between;
 }
 
-.records  a {
+.records a {
   color: hsl(180, 66%, 49%);
   text-decoration: none;
 }
@@ -294,7 +294,7 @@ form button {
   background-color: hsl(257, 27%, 26%);
 }
 
-.records a:hover{
+.records a:hover {
   text-decoration: underline;
 }
 
@@ -498,6 +498,32 @@ footer div a {
     width: 50%;
   }
 
+  #form-article {
+    background-color: #f0f1f6;
+    width: 100%;
+    padding: 0 0 10rem;
+    position: relative;
+  }
+
+  #form-section {
+    width: 100%;
+    margin: -3rem 0 3rem;
+  }
+
+  .records {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+
+  .records span {
+    width: 68%;
+  }
+
+  .records > div {
+    flex: 1;
+  }
+
   form {
     flex-direction: row;
     align-items: start;
@@ -505,6 +531,7 @@ footer div a {
   }
 
   #form-div {
+    flex-grow: 1;
     flex-shrink: 0;
     width: 80%;
   }

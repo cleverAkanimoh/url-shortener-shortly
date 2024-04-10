@@ -4,6 +4,24 @@ const errorLabel = document.getElementById("error-label");
 const shortenBtn = document.getElementById("shorten-btn");
 const recordsContainer = document.getElementById("records-container");
 
+let localRecords = [];
+
+window.onload = () => {
+  localRecords = localStorage.getItem("short-links").split(",");
+
+  localRecords.forEach((record) => {
+    makeDiv(record);
+  });
+};
+
+const makeDiv = (html) => {
+  let div = document.createElement("div");
+  div.className = "records";
+  div.innerHTML = html;
+  const re = recordsContainer.appendChild(div);
+  return re;
+};
+
 const resetError = (text) => {
   errorLabel.innerText = text;
   input.classList.add("error");
@@ -25,7 +43,7 @@ const setRecord = (long_url, short_url) => `
 form.onsubmit = async (e) => {
   e.preventDefault();
   shortenBtn.innerText = "shortening url...";
-  shortenBtn.disabled = true;
+  // shortenBtn.disabled = true;
   let inputValue = input.value.trim().toLowerCase();
 
   if (inputValue === "") {
@@ -37,37 +55,46 @@ form.onsubmit = async (e) => {
     resetError("Url is not valid. Must start with https://");
     return;
   }
+
   console.log("getting short link");
 
-  try {
-    const res = await fetch(`https://cleanuri.com/api/v1/shorten`, {
-      mode: "no-cors",
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: JSON.stringify(inputValue),
-    });
+  makeDiv(setRecord(inputValue, "no short url yet"));
 
-    console.log(res);
+  localRecords.push(setRecord(inputValue, "no short url yet"));
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
+  localStorage.setItem("short-links", localRecords);
 
-    const data = await response.json();
-    res.status(200).json(data);
-
-    console.log(data);
-  } catch (error) {
-    resetError("Failed to fetch short url. Try again later");
-    let div = document.createElement("div");
-    div.className = "records"
-    div.innerHTML = setRecord(inputValue, "no short url yet");
-    recordsContainer.appendChild(div);
-    console.error("Failed to fetch: ", error);
-  }
   inputValue = "";
   shortenBtn.innerText = "Shorten it!";
 };
+
+// try {
+
+//   // await fetch(`https://cleanuri.com/api/v1/shorten`, {
+//   //   mode: "no-cors",
+//   //   method: "POST",
+//   //   headers: {
+//   //     "Content-Type": "application/json",
+//   //     "Access-Control-Allow-Origin": "*",
+//   //   },
+//   //   body: JSON.stringify(inputValue),
+//   // })
+//   //   .then((res) => res.json())
+//   //   .then((data) => {
+//   //     let div = document.createElement("div");
+//   //     div.className = "records";
+//   //     div.innerHTML = setRecord(inputValue, data.result_url);
+//   //     recordsContainer.appendChild(div);
+
+//   //     localStorage.setItem(
+//   //       inputValue,
+//   //       setRecord(inputValue, data.result_url)
+//   //     );
+//   //   });
+
+//   // console.log(res);
+// } catch (error) {
+//   // resetError("Failed to fetch short url. Try again later");
+
+//   // console.error("Failed to fetch: ", error);
+// }
