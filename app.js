@@ -25,10 +25,6 @@ const makeDiv = (html) => {
   div.className = "records";
   div.innerHTML = html;
   const re = recordsContainer.appendChild(div);
-
-  localRecords.push(html);
-
-  localStorage.setItem("short-links", localRecords);
   return re;
 };
 
@@ -69,25 +65,41 @@ form.onsubmit = async (e) => {
     return;
   }
 
-  input.value = "";
-  shortenBtn.innerText = "Shorten it!";
-  shortenBtn.disabled = false;
-  
-  try {
-    const request = await fetch("https://cleanuri.com/api/v1/shorten", {
-      method: "POST",
-      headers: {
-        "content-type": "application/x-www-form-urlencoded",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: new URLSearchParams({ url: inputValue }),
-    });
+  if (localStorage.getItem("short-links")) {
+    if (localStorage.getItem("short-links").includes(inputValue)) {
+      setError("Url has already been shortened");
+      return;
+    }
+  }
 
-    const response = await request.json();
-    console.log(response);
+  try {
+    const response = await fetch(
+      "https://url-shortener-service.p.rapidapi.com/shorten",
+      {
+        method: "POST",
+        headers: {
+          "content-type": "application/x-www-form-urlencoded",
+          "X-RapidAPI-Key":
+            "9abd035ae9msh68abda95c90ee51p199ae3jsn9f300f1979e6",
+          "X-RapidAPI-Host": "url-shortener-service.p.rapidapi.com",
+        },
+        body: new URLSearchParams({ url: inputValue }),
+      }
+    );
+
+    const result = await response.json();
+
+    makeDiv(setRecord(inputValue, result.result_url));
+    localRecords.push(setRecord(inputValue, result.result_url));
+
+    localStorage.setItem("short-links", localRecords);
   } catch (error) {
     setError("Failed to fetch short url. Try again later");
 
     console.error("Failed to fetch: ", error);
   }
+
+  input.value = "";
+  shortenBtn.innerText = "Shorten it!";
+  shortenBtn.disabled = false;
 };
