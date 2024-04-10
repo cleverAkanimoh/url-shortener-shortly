@@ -6,16 +6,18 @@ const recordsContainer = document.getElementById("records-container");
 
 let localRecords = [];
 
-// recordsContainer.innerHTML = "<span>Loading records...</span>";
+recordsContainer.innerHTML = "<span>Loading records...</span>";
 
 window.onload = () => {
-  localRecords = localStorage.getItem("short-links").split(",");
+  recordsContainer.innerText = "";
 
-  // recordsContainer.innerText = "";
+  if (localStorage.getItem("short-links")) {
+    localRecords = localStorage.getItem("short-links").split(",");
 
-  localRecords.forEach((record) => {
-    makeDiv(record);
-  });
+    localRecords.forEach((record) => {
+      makeDiv(record);
+    });
+  }
 };
 
 const makeDiv = (html) => {
@@ -70,15 +72,22 @@ form.onsubmit = async (e) => {
   input.value = "";
   shortenBtn.innerText = "Shorten it!";
   shortenBtn.disabled = false;
-  makeDiv(setRecord(inputValue, "no url"));
-  // try {
+  
+  try {
+    const request = await fetch("https://cleanuri.com/api/v1/shorten", {
+      method: "POST",
+      headers: {
+        "content-type": "application/x-www-form-urlencoded",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: new URLSearchParams({ url: inputValue }),
+    });
 
-  //   console.log(res);
-  // } catch (error) {
-  //   setError("Failed to fetch short url. Try again later");
+    const response = await request.json();
+    console.log(response);
+  } catch (error) {
+    setError("Failed to fetch short url. Try again later");
 
-  //   makeDiv(setRecord(inputValue, "no short url"));
-
-  //   console.error("Failed to fetch: ", error);
-  // }
+    console.error("Failed to fetch: ", error);
+  }
 };

@@ -53,6 +53,7 @@ input {
 nav {
   height: 4rem;
   display: flex;
+  align-items: center;
   padding: 0 1rem;
   color: hsl(0, 0%, 75%);
 }
@@ -224,6 +225,7 @@ a:hover {
 
 form {
   width: 90%;
+  height: 100%;
   padding: 1.25rem;
   display: flex;
   flex-direction: column;
@@ -237,6 +239,7 @@ form {
 
 #form-div {
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 3px;
