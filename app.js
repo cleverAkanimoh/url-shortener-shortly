@@ -56,8 +56,6 @@ form.onsubmit = async (e) => {
     return;
   }
 
-  console.log("getting short link");
-
   makeDiv(setRecord(inputValue, "no short url yet"));
 
   localRecords.push(setRecord(inputValue, "no short url yet"));
