@@ -67,18 +67,18 @@ form.onsubmit = async (e) => {
     return;
   }
 
-  try {
-    makeDiv(setRecord(inputValue, result.result_url));
-
-    console.log(res);
-  } catch (error) {
-    setError("Failed to fetch short url. Try again later");
-
-    makeDiv(setRecord(inputValue, "no short url"));
-
-    console.error("Failed to fetch: ", error);
-  }
-
   inputValue = "";
   shortenBtn.innerText = "Shorten it!";
+  shortenBtn.disabled = false;
+  makeDiv(setRecord(inputValue, "no url"));
+  // try {
+
+  //   console.log(res);
+  // } catch (error) {
+  //   setError("Failed to fetch short url. Try again later");
+
+  //   makeDiv(setRecord(inputValue, "no short url"));
+
+  //   console.error("Failed to fetch: ", error);
+  // }
 };
