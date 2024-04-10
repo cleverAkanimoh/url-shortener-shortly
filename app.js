@@ -4,6 +4,8 @@ const errorLabel = document.getElementById("error-label");
 const shortenBtn = document.getElementById("shorten-btn");
 const recordsContainer = document.getElementById("records-container");
 
+import {simplecopy} from "./simpleCopy.min.js"
+
 let localRecords = [];
 
 recordsContainer.innerHTML = "<span>Loading records...</span>";
@@ -17,6 +19,22 @@ window.onload = () => {
     localRecords.forEach((record) => {
       makeDiv(record);
     });
+  }
+
+  const copyBtn = recordsContainer.getElementsByClassName("copy-btn");
+
+  console.log(copyBtn);
+
+  for (let i = 0; i < copyBtn.length; i++) {
+    copyBtn[i].onclick = () => {
+      simplecopy(copyBtn[i].id || "nothing was copied");
+      copyBtn[i].classList.add("active");
+      copyBtn[i].innerText = "copied";
+      setTimeout(() => {
+        copyBtn[i].innerText = "copy";
+        copyBtn[i].classList.remove("active");
+      }, 3000);
+    };
   }
 };
 
@@ -43,7 +61,7 @@ const setRecord = (long_url, short_url) => `
 <span>${long_url}</span>
 <div>
   <a href=${short_url} target="_blank">${short_url}</a>
-  <button onclick="() => simplyCopy(${short_url})" class="copy-btn">copy</button>
+  <button class="copy-btn" id=${short_url} >copy</button>
 </div>`;
 
 form.onsubmit = async (e) => {
@@ -90,6 +108,7 @@ form.onsubmit = async (e) => {
     const result = await response.json();
 
     makeDiv(setRecord(inputValue, result.result_url));
+
     localRecords.push(setRecord(inputValue, result.result_url));
 
     localStorage.setItem("short-links", localRecords);
