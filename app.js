@@ -6,12 +6,12 @@ const recordsContainer = document.getElementById("records-container");
 
 let localRecords = [];
 
-recordsContainer.innerHTML = "<span>Loading records...</span>";
+// recordsContainer.innerHTML = "<span>Loading records...</span>";
 
 window.onload = () => {
   localRecords = localStorage.getItem("short-links").split(",");
 
-  recordsContainer.innerText = "";
+  // recordsContainer.innerText = "";
 
   localRecords.forEach((record) => {
     makeDiv(record);
@@ -50,8 +50,11 @@ const setRecord = (long_url, short_url) => `
 
 form.onsubmit = async (e) => {
   e.preventDefault();
+
   shortenBtn.innerText = "shortening url...";
+
   shortenBtn.disabled = true;
+
   let inputValue = input.value.trim().toLowerCase();
 
   if (inputValue === "") {
@@ -59,44 +62,12 @@ form.onsubmit = async (e) => {
     return;
   }
 
-  if (!inputValue.startsWith("https://") || !inputValue.includes(".")) {
+  if (!inputValue.startsWith("https://")) {
     setError("Url is not valid");
     return;
   }
-
-  if (inputValue) {
-    setError("Url is not valid");
-    return;
-  }
-
-  // const url = "https://url-shortener-service.p.rapidapi.com/shorten";
-  // const options = {
-  //   method: "POST",
-  //   headers: {
-  //     "content-type": "application/x-www-form-urlencoded",
-  //     "X-RapidAPI-Key": "9abd035ae9msh68abda95c90ee51p199ae3jsn9f300f1979e6",
-  //     "X-RapidAPI-Host": "url-shortener-service.p.rapidapi.com",
-  //   },
-  //   body: new URLSearchParams({
-  //     url: inputValue,
-  //   }),
-  // };
 
   try {
-    // await fetch(url, options);
-    // await response.text();
-    const response = await fetch(`https://cleanuri.com/api/v1/shorten`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-      body: new URLSearchParams({
-        url: inputValue,
-      }),
-    });
-    const result = await response.text();
-
     makeDiv(setRecord(inputValue, result.result_url));
 
     console.log(res);
