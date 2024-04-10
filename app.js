@@ -19,10 +19,14 @@ const makeDiv = (html) => {
   div.className = "records";
   div.innerHTML = html;
   const re = recordsContainer.appendChild(div);
+
+  localRecords.push(html);
+
+  localStorage.setItem("short-links", localRecords);
   return re;
 };
 
-const resetError = (text) => {
+const setError = (text) => {
   errorLabel.innerText = text;
   input.classList.add("error");
   shortenBtn.disabled = false;
@@ -47,52 +51,38 @@ form.onsubmit = async (e) => {
   let inputValue = input.value.trim().toLowerCase();
 
   if (inputValue === "") {
-    resetError("input field cannot be empty");
+    setError("input field cannot be empty");
     return;
   }
 
   if (!inputValue.startsWith("https://")) {
-    resetError("Url is not valid. Must start with https://");
+    setError("Url is not valid. Must start with https://");
     return;
   }
 
-  makeDiv(setRecord(inputValue, "no short url yet"));
+  try {
+    await fetch(`https://cleanuri.com/api/v1/shorten`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+      body: JSON.stringify(inputValue),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        makeDiv(setRecord(inputValue, data.result_url));
+      });
 
-  localRecords.push(setRecord(inputValue, "no short url yet"));
+    console.log(res);
+  } catch (error) {
+    setError("Failed to fetch short url. Try again later");
 
-  localStorage.setItem("short-links", localRecords);
+    makeDiv(setRecord(inputValue, "no short url yet"));
+
+    console.error("Failed to fetch: ", error);
+  }
 
   inputValue = "";
   shortenBtn.innerText = "Shorten it!";
 };
-
-// try {
-
-//   // await fetch(`https://cleanuri.com/api/v1/shorten`, {
-//   //   mode: "no-cors",
-//   //   method: "POST",
-//   //   headers: {
-//   //     "Content-Type": "application/json",
-//   //     "Access-Control-Allow-Origin": "*",
-//   //   },
-//   //   body: JSON.stringify(inputValue),
-//   // })
-//   //   .then((res) => res.json())
-//   //   .then((data) => {
-//   //     let div = document.createElement("div");
-//   //     div.className = "records";
-//   //     div.innerHTML = setRecord(inputValue, data.result_url);
-//   //     recordsContainer.appendChild(div);
-
-//   //     localStorage.setItem(
-//   //       inputValue,
-//   //       setRecord(inputValue, data.result_url)
-//   //     );
-//   //   });
-
-//   // console.log(res);
-// } catch (error) {
-//   // resetError("Failed to fetch short url. Try again later");
-
-//   // console.error("Failed to fetch: ", error);
-// }
