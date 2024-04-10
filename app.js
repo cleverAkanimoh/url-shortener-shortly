@@ -67,7 +67,7 @@ form.onsubmit = async (e) => {
     return;
   }
 
-  inputValue = "";
+  input.value = "";
   shortenBtn.innerText = "Shorten it!";
   shortenBtn.disabled = false;
   makeDiv(setRecord(inputValue, "no url"));
